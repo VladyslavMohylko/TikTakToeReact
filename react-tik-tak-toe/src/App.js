@@ -41,8 +41,10 @@ class App extends React.Component {
           this.setState({ squares: Array(9).fill(null) });
           this.setState({ count: 0 });
         }, 2000);
+        return true;
       }
     }
+    return false;
   }
 
   clickHandler = (event) => {
@@ -55,9 +57,10 @@ class App extends React.Component {
       this.setState({ squares: currentSquares });
     }
 
-    this.isWinner();
+    let result = this.isWinner();
+    console.log(result)
     
-    if (this.state.count === 8) {
+    if (this.state.count === 8 && !result) {
       this.isDraw();
     }
   }
